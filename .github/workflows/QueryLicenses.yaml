@@ -1,4 +1,4 @@
-name: Execute Log Archiver Tool
+name: Execute License Reporting Tool
 
 on:
   # push:
@@ -10,8 +10,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  archive-logs:
-    name: Run log archiver tool against specified ARCGIS_PORTAL_URL secret and archive logs to specified AWS Account
+  check-licensing:
+    name: Run license report tool against specified ARCGIS_PORTAL_URL secret
     runs-on: ubuntu-latest
     # see https://github.com/jtroe/cicd-container-images
     # and https://github.com/jtroe/cicd-container-images/blob/main/python/arcgis-2.1.0-Conda.Linux.Dockerfile
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run log archiver tool
+      - name: Run license report tool
         id: log_tool
         env:
           ARCGIS_PORTAL_URL: ${{ secrets.ARCGIS_PORTAL_URL }}
