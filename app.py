@@ -27,13 +27,7 @@ def datetime_of_timestamp(timestamp_value) -> dt.datetime:
     return dt_value
 
 def get_server_licenses(gis):
-    gis_server_mgr = gis.admin.servers
-    # is there a better way to get the hosting server? can't just index, it varies
-    hosting_server_urls = [f'{s["url"]}/admin' for s in gis_server_mgr.properties["servers"] if s["serverRole"] == "HOSTING_SERVER"]
-    if len(hosting_server_urls) == 0:
-        return {} # no federated hosting servers
-    gis_servers_by_url = {s.url: s for s in gis_server_mgr.list()}
-    hosting_server = gis_servers_by_url[hosting_server_urls[0]]
+    hosting_server = gis.admin.servers.get(role="HOSTING_SERVER")
     return hosting_server.system.licenses
 
 def get_license_status(gis):
