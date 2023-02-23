@@ -27,5 +27,8 @@ jobs:
           ARCGIS_PORTAL_URL: ${{ secrets.ARCGIS_PORTAL_URL }}
           ARCGIS_PORTAL_ADMIN: ${{ secrets.ARCGIS_PORTAL_ADMIN }}
           ARCGIS_PORTAL_ADMIN_PASSWORD: ${{ secrets.ARCGIS_PORTAL_ADMIN_PASSWORD }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         run: |
           python app.py $ARCGIS_PORTAL_URL $ARCGIS_PORTAL_ADMIN $ARCGIS_PORTAL_ADMIN_PASSWORD
